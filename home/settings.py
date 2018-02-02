@@ -53,6 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'home.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -81,6 +82,18 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'energiesolaire$energiesolaire',
+        'USER': 'energiesolaire',
+        'PASSWORD': 'es2018senha*db*',
+        'HOST': 'energiesolaire.mysql.pythonanywhere-services.com',
+    }
+}
+'''
 
 
 # Password validation
