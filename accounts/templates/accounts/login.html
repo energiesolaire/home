@@ -1,0 +1,72 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login</title>
+
+		<!--Arquivos de estilo-->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+		<!--Bibliotecas JavaScript-->
+		<script src="{% static 'js/jquery/jquery.min.js' %}"></script>
+		<script src="{% static 'js/popper/popper.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 mt-5">
+					<div class="row bg-primary justify-content-center my-3">
+						<h4 class="my-2 text-white">CES Login</h4>
+					</div>
+					<form method="post" class="text-left">
+						{% csrf_token %}
+
+						{% for hidden_field in form.hidden_fields %}
+							{{hidden_field}}
+						{% endfor %}
+						<!--Renderização dos erros genéricos-->
+						{% if form.non_field_errors %}
+							<div class="alert alert-danger" role="alert">
+								{% for error in form.non_field_errors %}
+									{{ error }}
+								{% endfor %}
+							</div>
+						{% endif %}
+						<!--Renderização dos campos visiveis do formulário-->
+						{% for field in form.visible_fields %}
+							<div class="form-group">
+								{{field.label_tag}}
+								{% if form.is_bound %}
+									{% if field.errors %}
+										{% render_field field class="form-control is-invalid" %}
+										{% for error in field_errors %}
+											<div class="invalid-feedback">
+												{{error}}
+											</div>
+										{% endfor %}
+									{% else %}
+										{% render_field field class="form-control is-valid" %}
+									{% endif %}
+								{% else %}
+									{% render_field field class="form-control" %}
+								{% endif %}
+								{% if field.help_text %}
+									<small class="form-text text-muted">
+										{{ field.help_text }}
+									</small>
+								{% endif %}
+							</div>
+						{% endfor %}
+						<div class="row justify-content-center">
+							<button type="submit" class="w-50 btn btn-primary text-center">Entrar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

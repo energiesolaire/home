@@ -14,10 +14,10 @@ from .managers import UserManager
 class User(AbstractBaseUser, PermissionsMixin):
 
 	#User Fields
-	email = models.EmailField(_('email adress'), unique=True)
-	first_name = models.CharField(_('first name'), max_length=60)
-	last_name = models.CharField(_('last name'), max_length=200)
-	date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
+	email = models.EmailField(_('email'), unique=True)
+	first_name = models.CharField(_('nome'), max_length=60)
+	last_name = models.CharField(_('sobrenome'), max_length=200)
+	date_joined = models.DateTimeField(_('data de inclusão'), auto_now_add=True)
 	avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
 
 	# Django Admin User Fields
@@ -30,8 +30,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 	REQUIRED_FIEDS = []
 
 	class Meta:
-		verbose_name = _('user')
-		verbose_name_plural= _('users')
+		verbose_name = _('Usuário')
+		verbose_name_plural= _('Usuários')
 
 	def get_full_name(self):
 		'''

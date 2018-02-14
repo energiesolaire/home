@@ -10,8 +10,8 @@ class UserAdminCreationForm(forms.ModelForm):
 	'''
 	Formulário para criar um novo usuário no site Admin
 	'''
-	password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
-	password2 = forms.CharField(label=_('Password Confirmation'), widget=forms.PasswordInput)
+	password1 = forms.CharField(label=_('Senha'), widget=forms.PasswordInput)
+	password2 = forms.CharField(label=_('Confirmação da senha'), widget=forms.PasswordInput)
 
 	class Meta:
 		model = User
